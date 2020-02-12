@@ -1,24 +1,24 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
-import * as Location from "expo-location";
-import { LOCATION_TASK_NAME } from "./actionCreators";
+import { Button, Text, View } from "react-native";
 
-export class AppComponent extends React.Component {
-  onPress = async () => {
-    const { status } = await Location.requestPermissionsAsync();
-    if (status === "granted") {
-      await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
-        accuracy: Location.Accuracy.Balanced
-      });
-    }
-  };
-
-  render() {
-    return (
-      <TouchableOpacity onPress={this.onPress} style={{ marginTop: 50 }}>
-        <Text>Enable background location</Text>
-        <Text>{JSON.stringify(this.props.lastLocation, null, 2)}</Text>
-      </TouchableOpacity>
-    );
-  }
-}
+export const AppComponent = ({ lastLocation, running, start, stop }) => (
+  <React.Fragment>
+    <View style={{ flex: 1, justifyContent: "center" }}>
+      {running ? (
+        <Button title="Stop" onPress={stop} />
+      ) : (
+        <Button title="Start" onPress={start} />
+      )}
+    </View>
+    <Text style={{ flex: 2 }}>
+      {JSON.stringify(
+        {
+          lastLocation,
+          running
+        },
+        null,
+        2
+      )}
+    </Text>
+  </React.Fragment>
+);
