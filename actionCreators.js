@@ -1,7 +1,12 @@
 import * as Location from "expo-location";
-import { START, STOP, UPDATE_LOCATION } from "./actionTypes";
+import { SET_GOAL, START, STOP, UPDATE_LOCATION } from "./actionTypes";
 
 export const LOCATION_TASK_NAME = "background-location-task";
+
+export const setGoal = payload => ({
+  type: SET_GOAL,
+  payload
+});
 
 export const start = () => async dispatch => {
   const { status } = await Location.requestPermissionsAsync();

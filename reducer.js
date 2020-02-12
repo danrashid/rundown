@@ -1,12 +1,19 @@
-import { START, STOP, UPDATE_LOCATION } from "./actionTypes";
+import { SET_GOAL, START, STOP, UPDATE_LOCATION } from "./actionTypes";
 
 const initialState = {
+  goal: "",
   lastLocation: null,
   running: false
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_GOAL:
+      return {
+        ...state,
+        goal: action.payload
+      };
+
     case START:
       return {
         ...state,

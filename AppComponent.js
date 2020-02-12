@@ -1,18 +1,43 @@
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Button, ScrollView, Text, TextInput, View } from "react-native";
 
-export const AppComponent = ({ lastLocation, running, start, stop }) => (
-  <React.Fragment>
-    <View style={{ flex: 1, justifyContent: "center" }}>
+const fontSize = 60;
+
+export const AppComponent = ({
+  goal,
+  lastLocation,
+  running,
+  setGoal,
+  start,
+  stop
+}) => (
+  <ScrollView
+    keyboardShouldPersistTaps="handled"
+    contentContainerStyle={{
+      flex: 1,
+      alignItems: "center",
+      paddingTop: 50
+    }}
+  >
+    <View style={{ flex: 1 }}>
+      <TextInput
+        placeholder="How far?"
+        onChangeText={setGoal}
+        value={goal}
+        keyboardType="numeric"
+        style={{ fontSize }}
+        autoFocus
+      />
       {running ? (
         <Button title="Stop" onPress={stop} />
       ) : (
-        <Button title="Start" onPress={start} />
+        parseFloat(goal) > 0 && <Button title="Start" onPress={start} />
       )}
     </View>
     <Text style={{ flex: 2 }}>
       {JSON.stringify(
         {
+          goal,
           lastLocation,
           running
         },
@@ -20,5 +45,5 @@ export const AppComponent = ({ lastLocation, running, start, stop }) => (
         2
       )}
     </Text>
-  </React.Fragment>
+  </ScrollView>
 );
