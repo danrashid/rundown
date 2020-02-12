@@ -6,6 +6,7 @@ const fontSize = 60;
 export const AppComponent = ({
   goal,
   lastLocation,
+  remaining,
   running,
   setGoal,
   start,
@@ -39,6 +40,7 @@ export const AppComponent = ({
         {
           goal,
           lastLocation,
+          remaining,
           running
         },
         null,

@@ -3,6 +3,7 @@ import { SET_GOAL, START, STOP, UPDATE_LOCATION } from "./actionTypes";
 const initialState = {
   goal: "",
   lastLocation: null,
+  remaining: null,
   running: false
 };
 
@@ -17,7 +18,8 @@ export const reducer = (state = initialState, action) => {
     case START:
       return {
         ...state,
-        running: true
+        running: true,
+        remaining: parseFloat(state.goal)
       };
 
     case STOP:
@@ -28,11 +30,12 @@ export const reducer = (state = initialState, action) => {
       };
 
     case UPDATE_LOCATION:
-      const locations = action.payload;
+      const { lastLocation, remaining } = action.payload;
 
       return {
         ...state,
-        lastLocation: locations.pop()
+        lastLocation,
+        remaining
       };
 
     default:
