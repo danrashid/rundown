@@ -17,7 +17,7 @@ export default class Component extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={this.onPress}>
+      <TouchableOpacity onPress={this.onPress} style={{ marginTop: 50 }}>
         <Text>Enable background location</Text>
       </TouchableOpacity>
     );
