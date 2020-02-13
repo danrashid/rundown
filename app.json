@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blank Template",
+    "name": "Rundown",
     "slug": "rundown",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -24,12 +24,18 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.danrashid.rundown2",
+      "buildNumber": "1.0.0",
       "supportsTablet": true,
       "infoPlist": {
         "UIBackgroundModes": [
           "location"
         ]
       }
+    },
+    "android": {
+      "package": "com.danrashid.rundown2",
+      "versionCode": 1
     }
   }
 }
