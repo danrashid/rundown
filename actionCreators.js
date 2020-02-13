@@ -18,7 +18,7 @@ export const start = () => async dispatch => {
   if (status === "granted") {
     try {
       await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
-        accuracy: Location.Accuracy.Balanced
+        accuracy: Location.Accuracy.High
       });
       dispatch({ type: START });
     } catch (error) {
