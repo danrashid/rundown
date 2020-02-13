@@ -1,4 +1,4 @@
-import { SET_GOAL, START, STOP, UPDATE_LOCATION } from "./actionTypes";
+import { RESET, SET_GOAL, START, STOP, UPDATE_LOCATION } from "./actionTypes";
 
 const initialState = {
   goal: "",
@@ -9,6 +9,12 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case RESET:
+      return {
+        ...state,
+        remaining: null
+      };
+
     case SET_GOAL:
       return {
         ...state,
@@ -19,7 +25,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         running: true,
-        remaining: parseFloat(state.goal)
+        remaining: state.remaining || parseFloat(state.goal)
       };
 
     case STOP:

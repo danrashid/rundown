@@ -1,11 +1,11 @@
 import React from "react";
 import { AppComponent } from "./AppComponent";
 import { connect } from "react-redux";
-import { setGoal, start, stop } from "./actionCreators";
+import { reset, setGoal, start, stop } from "./actionCreators";
 
 const mapStateToProps = state => state;
 
-const mapDispatchToProps = { setGoal, start, stop };
+const mapDispatchToProps = { reset, setGoal, start, stop };
 
 const Container = props => <AppComponent {...props} />;
 

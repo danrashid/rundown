@@ -8,6 +8,7 @@ export const AppComponent = ({
   lastLocation,
   remaining,
   running,
+  reset,
   setGoal,
   start,
   stop
@@ -20,17 +21,33 @@ export const AppComponent = ({
       paddingTop: 50
     }}
   >
+    {remaining === 0 && <Text style={{ flex: 1, fontSize }}>You did it!</Text>}
     <View style={{ flex: 1 }}>
       <TextInput
         placeholder="How far?"
+        editable={!running && !remaining}
         onChangeText={setGoal}
-        value={goal}
+        value={remaining > 0 ? remaining.toString() : goal}
         keyboardType="numeric"
         style={{ fontSize }}
         autoFocus
       />
+    </View>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        width: "100%"
+      }}
+    >
       {running ? (
         <Button title="Stop" onPress={stop} />
+      ) : remaining > 0 ? (
+        <React.Fragment>
+          <Button title="Resume" onPress={start} />
+          <Button title="Reset" onPress={reset} />
+        </React.Fragment>
       ) : (
         parseFloat(goal) > 0 && <Button title="Start" onPress={start} />
       )}

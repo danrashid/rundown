@@ -1,8 +1,12 @@
 import * as Location from "expo-location";
 import { getDistance, convertDistance } from "geolib";
-import { SET_GOAL, START, STOP, UPDATE_LOCATION } from "./actionTypes";
+import { RESET, SET_GOAL, START, STOP, UPDATE_LOCATION } from "./actionTypes";
 
 export const LOCATION_TASK_NAME = "background-location-task";
+
+export const reset = () => ({
+  type: RESET
+});
 
 export const setGoal = payload => ({
   type: SET_GOAL,

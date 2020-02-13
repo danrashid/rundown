@@ -1,3 +1,4 @@
+export const RESET = "RESET";
 export const SET_GOAL = "SET_GOAL";
 export const START = "START";
 export const STOP = "STOP";
